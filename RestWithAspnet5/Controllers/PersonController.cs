@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using RestWithAspnet5.Model;
 using RestWithAspnet5.Business;
+using RestWithAspnet5.Data.VO;
 
 namespace RestWithAspnet5.Controllers
 {
@@ -39,7 +39,7 @@ namespace RestWithAspnet5.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Person person)
+        public IActionResult Post([FromBody] PersonVO person)
         {
             if (person == null)
             {
@@ -50,7 +50,7 @@ namespace RestWithAspnet5.Controllers
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] Person person)
+        public IActionResult Update([FromBody] PersonVO person)
         {
             if (person == null)
             {
