@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RestWithAspnet5.Business;
 using RestWithAspnet5.Business.Implementations;
+using RestWithAspnet5.Hypermedia.Enricher;
+using RestWithAspnet5.Hypermedia.Filters;
 using RestWithAspnet5.Model.Context;
 using RestWithAspnet5.Repository.Generic;
 using Serilog;
@@ -43,6 +45,22 @@ namespace RestWithAspnet5
                 MigrateDatabase(connection);
             }
 
+            //services.AddMvc(options =>
+            //{
+            //    options.RespectBrowserAcceptHeader = true;
+
+            //    options.FormatterMappings.SetMediaTypeMappingForFormat("xml", 
+            //        MediaTypeHeaderValue.Parse("application/xml"));
+
+            //    options.FormatterMappings.SetMediaTypeMappingForFormat("json",
+            //        MediaTypeHeaderValue.Parse("application/json"));
+            //}).AddXmlSerializerFormatters();
+
+            var filterOptions = new HyperMediaFilterOptions();
+            filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
+
+            services.AddSingleton(filterOptions);
+
             // Versioning API
             services.AddApiVersioning();
 
@@ -69,6 +87,7 @@ namespace RestWithAspnet5
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute("DefaultApi", "{controller=values}/{id?}");
             });
         }
 
