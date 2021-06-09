@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RestWithAspnet5.Business;
 using RestWithAspnet5.Data.VO;
@@ -9,13 +10,14 @@ namespace RestWithAspnet5.Controllers
 {
     [ApiVersion("1")]
     [ApiController]
+    [Authorize("Bearer")]
     [Route("api/[controller]/v{version:apiVersion}")]
     public class BookController : ControllerBase
     {
-        private readonly ILogger<PersonController> _logger;
+        private readonly ILogger<BookController> _logger;
         private IBookBusiness _bookBusiness;
 
-        public BookController(ILogger<PersonController> logger, IBookBusiness bookBusiness)
+        public BookController(ILogger<BookController> logger, IBookBusiness bookBusiness)
         {
             _logger = logger;
             _bookBusiness = bookBusiness;
