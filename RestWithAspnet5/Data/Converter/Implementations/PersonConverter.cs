@@ -22,6 +22,7 @@ namespace RestWithAspnet5.Data.Converter.Implementations
                 LastName = origin.LastName,
                 Address = origin.Address,
                 Gender = origin.Gender,
+                Enabled = origin.Enabled
             };
         }
 
@@ -39,6 +40,7 @@ namespace RestWithAspnet5.Data.Converter.Implementations
                 LastName = origin.LastName,
                 Address = origin.Address,
                 Gender = origin.Gender,
+                Enabled = origin.Enabled
             };
         }
 

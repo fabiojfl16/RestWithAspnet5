@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestWithAspnet5.Data.VO;
 using RestWithAspnet5.Hypermedia.Constants;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,6 +34,13 @@ namespace RestWithAspnet5.Hypermedia.Enricher
                 Href = link,
                 Rel = RelationType.self,
                 Type = ResponseTypeFormat.DefaultPut
+            });
+            content.Links.Add(new HyperMediaLink()
+            {
+                Action = HttpActionVerb.PATCH,
+                Href = link,
+                Rel = RelationType.self,
+                Type = ResponseTypeFormat.DefaultPatch
             });
             content.Links.Add(new HyperMediaLink()
             {

@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestWithAspnet5.Data.VO;
 using RestWithAspnet5.Hypermedia.Constants;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 

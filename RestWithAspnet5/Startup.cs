@@ -108,6 +108,7 @@ namespace RestWithAspnet5
 
             var filterOptions = new HyperMediaFilterOptions();
             filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
+            filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
 
             services.AddSingleton(filterOptions);
 
@@ -137,6 +138,7 @@ namespace RestWithAspnet5
             services.AddTransient<ITokenService, TokenService>();
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
 

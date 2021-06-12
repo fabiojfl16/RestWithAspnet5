@@ -16,5 +16,9 @@ namespace RestWithAspnet5.Repository.Generic
         void Delete(long id);
 
         bool Exists(long id);
+
+        List<T> FindWithPagedSearch(string query);
+
+        int GetCount(string query);
     }
 }
